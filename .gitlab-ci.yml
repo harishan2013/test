@@ -7,6 +7,8 @@ test:
   - python3 setup.py develop
   - nosetests -s MIGDataCollector --with-coverage --cover-erase --cover-inclusive --cover-package=MIGDataCollector --cover-xml --with-xunit > nose_test.out
   artifacts:
+  name: coverage
     paths:
-      - coverage/
+      - coverage/index.html
+      
   
