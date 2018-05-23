@@ -1,0 +1,9 @@
+before_script:
+  - apt-get install -y python-pip
+  - apt-get update -qy
+  - pip install -r test-requirements.txt
+
+unit_tests:
+  stage: test
+  script:
+    - nosetests
