@@ -6,11 +6,5 @@ test:
   - pip3 install -r test-requirements.txt
   - python3 setup.py develop
   - nosetests -s MIGDataCollector --with-coverage --cover-erase --cover-inclusive --cover-package=MIGDataCollector --cover-xml --with-xunit > nose_test.out
-  
-wheel:
-  script: python setup.py bdist_wheel
-  artifacts:
-    paths:
-      - dist/
-      
-  
+  only:
+    - merge-requests
