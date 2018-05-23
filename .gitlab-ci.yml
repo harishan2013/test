@@ -5,6 +5,8 @@ test:
   - apt-get install -y python3-dev python3-pip
   - pip3 install -r test-requirements.txt
   - apt-get install python3-setuptools
+  - pip3 install -U pip3 setuptools
+  - pip3 install setuptools
   - python3 setup.py develop
   - nosetests -s MIGDataCollector --with-coverage --cover-erase --cover-inclusive --cover-package=MIGDataCollector --cover-xml --with-xunit > nose_test.out
   only:
