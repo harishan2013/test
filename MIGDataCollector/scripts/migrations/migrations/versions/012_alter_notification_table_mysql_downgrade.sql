@@ -1,0 +1,1 @@
+ALTER TABLE `notification_messages` DROP COLUMN `notification_data`;

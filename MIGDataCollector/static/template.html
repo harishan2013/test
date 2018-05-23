@@ -1,0 +1,12 @@
+<html>
+   <head>
+      <title>{{ title }}</title>
+   </head>
+   <body>
+     <ul style="list-style-type: none;">
+       {% for item in items %}
+         <li>{{ escape(item) }}</li>
+       {% end %}
+     </ul>
+   </body>
+ </html>

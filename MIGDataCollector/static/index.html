@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Logs</title>
+	</head>
+	<body>
+		<div style="width: 50%; float:left; position: fixed; clear:left">
+			<table border="2" cellpadding="2" cellspacing="2">
+				<th style="background-color: yellowgreen;">Event Log Files</th>
+				{%for eventdatalog in eventdatalogs%}
+				<tr>
+					<td><a target="_blank" href=/log/eventlogs/{{eventdatalog}}>{{eventdatalog}}</a></td>
+				</tr>
+				{%end%}
+			</table>
+		</div>
+		<div style="width: 50%; float: right;">
+			<table border="2" cellpadding="2" cellspacing="2">
+				<th style="background-color: indianred; ">Application Log Files</th>
+				{%for application_log in application_logs%}
+				<tr>
+					<td><a target="_blank" href=/log/logs/{{application_log}}>{{application_log}}</a></td>
+				</tr>
+				{%end%}
+			</table>
+		</div>
+
+	</body>
+</html>

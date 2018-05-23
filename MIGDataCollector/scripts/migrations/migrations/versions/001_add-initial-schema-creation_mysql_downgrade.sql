@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS `interval_capability_tracking_logs`;
+DROP TABLE IF EXISTS `interval_capability_tracking`;
+DROP TABLE IF EXISTS `metered_device_consumption`;
+DROP TABLE IF EXISTS `metered_devices`;
+DROP TABLE IF EXISTS `device_capability_event_data_logs`;
+DROP TABLE IF EXISTS `device_capabilities_map`;
+DROP TABLE IF EXISTS `capabilities`;
+DROP TABLE IF EXISTS `devices`;
+DROP TABLE IF EXISTS `edge_gateway_devices_map`;

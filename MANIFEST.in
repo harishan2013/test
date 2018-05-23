@@ -1,0 +1,5 @@
+recursive-include MIGDataCollector/static *
+recursive-include MIGDataCollector/src *
+recursive-include MIGDataCollector/scripts *
+include MIGDataCollector/logs/*
+include MIGDataCollector/eventlogs/*

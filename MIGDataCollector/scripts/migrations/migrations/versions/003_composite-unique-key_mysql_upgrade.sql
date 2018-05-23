@@ -1,0 +1,1 @@
+ALTER TABLE `device_capability_event_data_logs` ADD UNIQUE INDEX `device_capability_id_recorded_time` (`device_capability_id`, `recorded_time`);

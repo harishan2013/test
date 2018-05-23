@@ -1,0 +1,177 @@
+1.SET UP OF ENVIRONMENT FOR EXECUTE THE SQL SCRIPTS:
+  =================================================
+
+   WINDOWS:
+   ========
+   Step1: Install MariaDB 10.0 based on your machine 32 or 64 bit version
+          you can download this from the url https://downloads.mariadb.org/mariadb/10.1.16/.
+
+   Step2: Install HeidiSQL based on your machine 32 or 64 bit version you can download
+          from the url http://www.heidisql.com/download.php.
+
+   Step3: Git clone project from the URL https://gitlab.com/mws-technology/MIGateway.git
+
+          use the below git command for clone.It either https or ssh command to clone the project.
+
+          open cmd
+
+          git clone https://gitlab.com/mws-technology/MIGateway.git
+
+          Note: check your folder path where project want to clone.
+          ====
+   Step4: Install Python 3.5 based on your machine 32 or 64 bit version you can download from the url
+          https://www.python.org/downloads/
+
+   Step5: check for python path is set in the environment variable if not set it manually.
+          use the below document
+          https://docs.python.org/2/using/windows.html
+
+   LINUX:
+   ======
+   Step1: Install MySQL Server use the below command.
+
+   Step2: Open the terminal
+          sudo apt-get update
+          sudo apt-get install mysql-server-5.5
+
+   Step3: Git clone the project from the URL https://gitlab.com/mws-technology/MIGateway.git
+
+          use the below git command for clone.It either https or ssh command to clone the project.
+
+          open terminal
+
+          git clone https://gitlab.com/mws-technology/MIGateway.git
+
+           Note: check your folder path where project want to clone.
+           ====
+
+   Step4: Install Python 3.5
+          use the below installation command
+          sudo apt-get install python3.5
+
+   Step5: check for python path is set globally if not set it manually.
+          use the below document
+          http://askubuntu.com/questions/250929/pythonpath-environment-variable
+
+
+   1.1 BASIC STEPS TO EXECUTE THE SQL SCRIPTS IN THE DB ENVIRONMENT: (Applicable for both QA and Developer)
+       =============================================================
+
+        Steps Applicable for both Windows and Linux:
+        --------------------------------------------
+
+        INSTALLATION OF LIBRARIES:
+        =========================
+
+        Step1: Open cmd or Terminal.
+
+        Step2: Goto your gitcloned MIGateway project directory like below path example
+               C:\Project\MIGateway\MIGDataCollector
+
+        Step3: Execute the below command.
+
+	           COMMAND                                         DESCRIPTION OF COMMAND TO UNDERSTAND
+
+	    pip install -r requirements.txt  | This command execute libraries to execute the sql scripts.
+
+
+	    Step4: Change the credentials of your mysql server USER,PASSWORD and DATABASE in config.py file .
+	           The file is placed under config folder from gitcloned MIGateway project directory
+	           E.G MIGateway\MIGDataCollector\config\config.py
+
+	     DATABASE in MYSQL SERVER:
+	     ========================
+
+        Step5: check the database miggateway is created in the mysql server. If not please create it in the server.
+               By using the below script command to create database in the mysql server.
+
+               CREATE DATABASE IF NOT EXISTS `miggatewaydb` /*!40100 DEFAULT CHARACTER SET utf8 */;
+
+
+         SET PROJECT PATH:
+         =================
+         Step6: set PYTHONPATH=%PYTHONPATH%;gitclone project MIGateway directory\MIGDataCollector
+
+         E.g: set PYTHONPATH=%PYTHONPATH%;C:\project\MIGateway\MIGDataCollector
+
+
+         Step7: Execute the below command.
+                open cmd or Terminal
+                Got to the path  gitcloned MIGateway project directory using command cd.
+                E.G MIGateway\MIGDataCollector\scripts\migrations
+
+               COMMAND                               DESCRIPTION OF COMMAND TO UNDERSTAND
+
+         python manage.py version_control | This command checks for database given in config.py file it is not
+                                             exist it throws Unknown database error then create the database and
+                                             run the command it set the default version is 0 for the database.
+
+
+          UPGRADE-Execute the scripts to create,alter,insert,update:
+          =======
+              It executes the created sql scripts in the gitcloned MIGateway project directory under MIGDataCollector under scripts
+          under migrations under migrations under versions folder.
+
+            Below is the example for the path.
+
+                 E.G: MIGateway\MIGDataCollector\scripts\migrations\migrations\versions
+
+
+           Step1: In the cmd or Terminal
+                  Goto gitcloned MIGateway project directory\MIGDataCollector\scripts\migrations
+
+           Step2: Execute the below command
+
+                    COMMAND                            DESCRIPTION OF COMMAND TO UNDERSTAND
+
+
+            python manage.py upgrade         | This command executes the sql scripts in the Database(miggatewaydb).
+
+
+
+          DOWNGRADE-Revert back the executed scripts in the mysql server miggatewaydb database:
+          =========
+
+           Step1: In the cmd or Terminal
+                  Goto gitclone MIGateway project directory\MIGDataCollector\scripts\migrations
+
+           Step2: Execute the below command
+
+                    COMMAND                                                 DESCRIPTION OF COMMAND TO UNDERSTAND
+            python manage.py downgrade <version number>            | If want to downgrade sql scripts under the version number E.g (1->0)
+                                                                     execute the commands.
+
+
+     ------------------------------------------------------------------------------------------------------------------
+
+
+   1.2 CREATING A NEW SQL SCRIPTS (Applicable for Developers only)
+       ===========================
+
+        To create a new sql scripts to execute in the mysql server. Before adding scripts make sure 1.1 upto upgrade is done.
+
+        Step1: Open cmd or Terminal
+               Goto gitcloned MIGateway project directory\MIGDataCollector\scripts\migrations
+               E.g: MIGateway\MIGDataCollector\scripts\migrations
+
+        Step2: Execute the below command
+
+	           COMMAND                                                                          DESCRIPTION OF COMMAND TO UNDERSTAND
+
+	  python manage.py script_sql mysql "description of script"                      | This command create the upgrade and downgrade script in the script
+                                                                                     folder under gitcloned MIGateway project directory\MIGDataCollector\scripts\migrations\migrations\versions folder
+                                                                                     in the format of ascending order in version number and description.
+                                                                                     E.g: <version>-<description>_<mysql>_upgrade.sql and <version>-<description>_<mysql>_downgrade.sql
+
+
+        Step3: Add your create or insert or update or etc sql scripts in the <version>-<description>_<mysql>_upgrade.sql under gitcloned MIGateway project directory\MIGDataCollector\scripts\migrations\migrations\versions folder
+
+        Step4: Add your revert back sql scripts that is drop or etc in the <version>-<description>_<mysql>_downgrade.sql under gitcloned MIGateway project directory\MIGDataCollector\scripts\migrations\migrations\versions folder
+
+        Step5: Do above 1.1 Upgrade to execute the new script in the mysql server miggateway database.
+
+
+
+
+
+
