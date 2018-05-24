@@ -1,4 +1,4 @@
-"""A setuptools based setup module.t
+"""A setuptools based setup module.tn
 
 See:
 https://packaging.python.org/en/latest/distributing.html
