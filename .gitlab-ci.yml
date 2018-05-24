@@ -1,4 +1,3 @@
-
 stages:
   - test
   - build
@@ -10,6 +9,7 @@ test:
   - apt-get update -qy
   - apt-get install -y python3-dev python3-pip
   - pip3 install -r test-requirements.txt
+  - pip3 install wheel
   - python3 setup.py develop
   - nosetests -s MIGDataCollector --with-coverage --cover-erase --cover-inclusive --cover-package=MIGDataCollector --cover-xml --with-xunit > nose_test.out
   only:
@@ -17,9 +17,7 @@ test:
     
 wheel:
   stage: build
-  script: 
-  - pip3 install wheel
-  - python3 setup.py bdist_wheel
+  script: python3 setup.py bdist_wheel
   artifacts:
     paths:
       - dist/
