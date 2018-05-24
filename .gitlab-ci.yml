@@ -1,9 +1,4 @@
-stages:
-  - test
-  - build
-
 test:
-  stage: test
   script:
   # this configures Django application to use attached postgres database that is run on `postgres` host
   - apt-get update -qy
