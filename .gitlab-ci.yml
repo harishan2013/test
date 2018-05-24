@@ -10,7 +10,7 @@ test:
   only:
     - branches
 wheel:
-  script: python3 setup.py bdist_wheel
+  script: python3 setup.py bdist
   artifacts:
     paths:
       - dist/
