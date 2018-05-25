@@ -19,9 +19,9 @@ test:
         - cd MIGDataCollector
         - fab make
     artifacts:
-        paths:
-            - MIGDataCollector/html
-        expire_in: 1 day
+      paths:
+        - MIGDataCollector/html
+      expire_in: 1 day
   only:
     - branches
     
