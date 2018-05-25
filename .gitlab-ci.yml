@@ -19,5 +19,5 @@ coverage:
     coverage: '/TOTAL.+ ([0-9]{1,3}%)/'
     artifacts:
         paths:
-            - build
+            - MIGDataCollector
         expire_in: 1 day
