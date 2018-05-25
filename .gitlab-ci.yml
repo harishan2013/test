@@ -17,15 +17,16 @@ runtest:
     paths:
        - MIGDataCollector
     expire_in: 1 day
-  apidoc:
+    
+apidoc:
    stage: test
    script:
-        - cd MIGDataCollector
-        - fab make
+    - cd MIGDataCollector
+    - fab make
     artifacts:
       paths:
-          - MIGDataCollector/html
+         - MIGDataCollector/html
       expire_in: 1 day
-  only:
+ only:
     - branches
     
