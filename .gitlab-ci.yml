@@ -1,4 +1,7 @@
-test:
+stage :test
+
+runtest:
+  stage: test
   image: python:3.5
   script:
   # this configures Django application to use attached postgres database that is run on `postgres` host
@@ -15,12 +18,13 @@ test:
        - MIGDataCollector
     expire_in: 1 day
   apidoc:
-    script:
+   stage: test
+   script:
         - cd MIGDataCollector
         - fab make
     artifacts:
       paths:
-        - MIGDataCollector/html
+          - MIGDataCollector/html
       expire_in: 1 day
   only:
     - branches
