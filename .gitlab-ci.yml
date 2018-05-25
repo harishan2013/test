@@ -1,4 +1,3 @@
-
 test:
   image: python:3.5
   script:
@@ -8,11 +7,20 @@ test:
   - pip install -r test-requirements.txt
   - pip install wheel
   - python setup.py develop
-  - nosetests -s MIGDataCollector --with-coverage --cover-erase --cover-inclusive --cover-package=MIGDataCollector --cover-xml --with-xunit > nose_test.out
-  - python setup.py bdist_wheel
-  artifacts:
-    paths:
-      - dist/
+  - nosetests -s MIGDataCollector --with-coverage --cover-erase --cover-inclusive --cover-package=MIGDataCollector --cover-html
+  - coverage report -m
+    coverage: '/TOTAL.+ ([0-9]{1,3}%)/'
+    artifacts:
+        paths:
+            - MIGDataCollector
+        expire_in: 1 day
+    apidoc:
+        - cd MIGDataCollector
+        - fab make
+    artifacts:
+        paths:
+            - /html
+        expire_in: 1 day
   only:
     - branches
-    - merge-requests
+    
