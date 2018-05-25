@@ -1,17 +1,23 @@
-stage :test
+image: python:3.5
 
-runtest:
-  image: python:3.5
-  script:
-  # this configures Django application to use attached postgres database that is run on `postgres` host
-  - apt-get update -qy
-  - apt-get install -y python-dev python-pip
-  - pip install -r test-requirements.txt
-  - pip install wheel
-  - python setup.py develop
-  - nosetests -s MIGDataCollector --with-coverage --cover-erase --cover-inclusive --cover-package=MIGDataCollector --cover-html
-  coverage: '/TOTAL.+ ([0-9]{1,3}%)/'
-  artifacts:
-    paths:
-       - MIGDataCollector
-    expire_in: 1 day
+stages:
+- test
+
+before_script:
+    - pip install -r requirements.txt
+    - apt-get update -qy
+    - apt-get install -y python-dev python-pip
+    - pip install -r test-requirements.txt
+    - pip install wheel
+    - python setup.py develop
+    
+coverage:
+    stage: test
+    script:
+        - nosetests -s MIGDataCollector --with-coverage --cover-erase --cover-inclusive --cover-package=MIGDataCollector --cover-html
+        - coverage report -m
+    coverage: '/TOTAL.+ ([0-9]{1,3}%)/'
+    artifacts:
+        paths:
+            - build
+        expire_in: 1 day
