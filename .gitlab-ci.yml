@@ -26,7 +26,7 @@ apidoc:
     stage: test
     script:
         - cd MIGDataCollector
-        - fab make
+        - make dir MIGDataCollector/build/html
     artifacts:
         paths:
             - MIGDataCollector/build/html
