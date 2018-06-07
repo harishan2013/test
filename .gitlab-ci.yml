@@ -26,8 +26,7 @@ apidoc:
     stage: test
     script:
         - cd MIGDataCollector
-        - make dir MIGDataCollector/build/html
     artifacts:
         paths:
-            - MIGDataCollector/build/html
+            - MIGDataCollector/build
         expire_in: 1 day
