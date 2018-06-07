@@ -28,5 +28,5 @@ apidoc:
         - cd MIGDataCollector
     artifacts:
         paths:
-            - MIGDataCollector/build/
+            - MIGDataCollector/static/
         expire_in: 1 day
