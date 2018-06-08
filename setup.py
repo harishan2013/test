@@ -1,4 +1,4 @@
-"""A setuptools based setup module.tn
+"""A setuptools based setup module.tn.going to merge
 
 See:
 https://packaging.python.org/en/latest/distributing.html
