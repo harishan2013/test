@@ -2,7 +2,6 @@ image: python:3.5
 
 stages:
 - test
-- build
 
 before_script:
     - pip install -r requirements.txt
@@ -20,12 +19,12 @@ coverage:
         - branches
         
 wheel:
-    stage: build
+    stage: test
     script:
         - nosetests -s MIGDataCollector --with-coverage --cover-erase --cover-inclusive --cover-package=MIGDataCollector --cover-html
         - python setup.py bdist_wheel
     artifacts:
         paths:
             - dist/
-        only:
-            - master
+     only:
+        - master
