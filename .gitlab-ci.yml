@@ -21,7 +21,6 @@ coverage:
     except:
         - master
         - triggers
-        - pushes
         
 wheel:
     stage: build
