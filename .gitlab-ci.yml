@@ -28,6 +28,8 @@ wheel:
         - sh version.sh
         - nosetests -s MIGDataCollector --with-coverage --cover-erase --cover-inclusive --cover-package=MIGDataCollector --cover-html
         - python setup.py bdist_wheel
+        - git config --global user.email "s.hariharan@mcwaneservices.com"
+        - git config --global user.name "Hariharan"
         - git tag -a 1.2.23
         - git push origin --tags
     artifacts:
