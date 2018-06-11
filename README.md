@@ -4,7 +4,7 @@ Current protocol support for transfering the data from devices is http, with CSV
 The data getting into the Gateway is received and acknowledged to the devices about the acceptance. Once the data is
   acknowledged then the data is logged in log files and published to the queue for further processing..
 
-# Development Setup
+# Development Setup..
 TODO
 
 # Releases
