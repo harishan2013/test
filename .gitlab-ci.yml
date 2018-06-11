@@ -17,8 +17,7 @@ coverage:
     script:
         - nosetests -s MIGDataCollector --with-coverage --cover-erase --cover-inclusive --cover-package=MIGDataCollector --cover-html
     only:
-        - branches
-        
+        - triggers
         
 wheel:
     stage: build
