@@ -28,8 +28,7 @@ wheel:
         - sh version.sh
         - nosetests -s MIGDataCollector --with-coverage --cover-erase --cover-inclusive --cover-package=MIGDataCollector --cover-html
         - python setup.py bdist_wheel
-        - releasing_version=`python setup.py --version`
-        - git tag -a ${releasing_version} -m "Release version: $releasing_version from jenkins master build"
+        - git tag -a 1.2.23 -m "Release version"
         - git push origin --tags
     artifacts:
        paths:
