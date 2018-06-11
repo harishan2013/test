@@ -30,7 +30,7 @@ wheel:
         - python setup.py bdist_wheel
         - git config --global user.email "s.hariharan@mcwaneservices.com"
         - git config --global user.name "Hariharan"
-        - git tag -a 1.2.23
+        - git tag -a 1.2.23 -m "test"
         - git push origin --tags
     artifacts:
        paths:
