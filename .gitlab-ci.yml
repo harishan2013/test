@@ -5,8 +5,7 @@ stages:
 - build
 
 before_script:
-    - docker version
-    - docker images
+    - docker info
     - cat /etc/lsb-release
     - pip install -r requirements.txt
     - apt-get update -qy
