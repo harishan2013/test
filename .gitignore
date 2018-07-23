@@ -1,64 +1,47 @@
 .idea
-*.log
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-env/
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-*.manifest
-*.spec
-pip-log.txt
-pip-delete-this-directory.txt
-htmlcov/
-.tox/
 .coverage
-.coverage.*
-.cache
+
+# Boilerplate
+*.py[cod]
+
+# C extensions
+*.so
+
+# Packages
+*.egg
+*.egg-info
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+lib
+lib64
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
 nosetests.xml
-coverage.xml
-*,cover
-.hypothesis/
+
+# Translations
 *.mo
-*.pot
-*.log
-local_settings.py
-instance/
-.webassets-cache
-.scrapy
-docs/_build/
-target/
-.ipynb_checkpoints
-.python-version
-celerybeat-schedule
-*.sage.py
-.env
-.venv
-venv/
-ENV/
-.spyderproject
-.ropeproject
-[Bb]in
-[Ii]nclude
-[Ll]ib
-[Ll]ib64
-[Ll]ocal
-pyvenv.cfg
-pip-selfcheck.json
-.DS_Store
-nose_test.out
+
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject
+
+# Ignore vim files
+*.swp
+*.swo
+
+
+# Ignore env folder
+env/
