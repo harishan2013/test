@@ -11,7 +11,7 @@ before_script:
 runTest:
     stage: test
     script:
-        - nosetests -sx
+        - nosetests -s MIGDataCollector --with-coverage --cover-erase --cover-inclusive --cover-package=MIGDataCollector --cover-html
 
 coverage:
     stage: test
