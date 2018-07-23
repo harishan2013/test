@@ -13,11 +13,13 @@ before_script:
 runTest:
     stage: test
     script:
+        - export PYTHONPATH=/builds/Hariharan/gitlabci
         - nosetests -sx
 
 coverage:
     stage: test
     script:
+        - export PYTHONPATH=/builds/Hariharan/gitlabci
         - nosetests -c .noserc -q --cover-html-dir=build --cover-html
         - coverage report -m
     coverage: '/TOTAL.+ ([0-9]{1,3}%)/'
