@@ -5,13 +5,15 @@ stages:
 - deploy
 
 before_script:
+    - apt-get update -qy
+    - apt-get install -y python-dev python-pip
     - pip install -r requirements.txt
     - python setup.py develop
 
 runTest:
     stage: test
     script:
-        - nosetests -s MIGDataCollector --with-coverage --cover-erase --cover-inclusive --cover-package=MIGDataCollector --cover-html
+        - nosetests -sx
 
 coverage:
     stage: test
