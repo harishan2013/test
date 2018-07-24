@@ -14,8 +14,6 @@ coverage:
     script:
         - nosetests -s MIGDataCollector --with-coverage --cover-erase --cover-inclusive --cover-package=MIGDataCollector --cover-html
         - nosetests -c .noserc -q --cover-html-dir=build --cover-html
-        - coverage report -m
-    coverage: '/TOTAL.+ ([0-9]{1,3}%)/'
     artifacts:
         paths:
             - build
