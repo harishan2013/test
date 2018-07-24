@@ -2,6 +2,7 @@ image: python:3.5
 
 stages:
 - test
+- build
 
 before_script:
     - apt-get update -qy
@@ -17,3 +18,20 @@ coverage:
     artifacts:
         paths:
             - build
+     only:
+        - branches
+        
+    except:
+        - master
+        
+wheel:
+    stage: build
+    script:
+        - python setup.py bdist_wheel
+       
+    artifacts:
+       paths:
+          - dist/
+    only:
+        - master
+
