@@ -2,14 +2,3 @@ tornado==4.4.1
 pika==0.10.0
 sqlalchemy-migrate==0.10.0
 PyMySQL==0.7.6
-
-
-
-
-
-
-
-
-
-
-

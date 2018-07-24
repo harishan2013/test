@@ -5,27 +5,27 @@ stages:
 - build
 
 before_script:
-    - pip install -r requirements.txt
     - apt-get update -qy
     - apt-get install -y python-dev python-pip
     - pip install -r test-requirements.txt
-    - pip install wheel
     - python setup.py develop
-    
+
 coverage:
     stage: test
     script:
         - nosetests -s MIGDataCollector --with-coverage --cover-erase --cover-inclusive --cover-package=MIGDataCollector --cover-html
+        - nosetests -c .noserc -q --cover-html-dir=build --cover-html
+    artifacts:
+        paths:
+            - build
     only:
         - branches
-        
     except:
         - master
-        
+
 wheel:
     stage: build
     script:
-        - nosetests -s MIGDataCollector --with-coverage --cover-erase --cover-inclusive --cover-package=MIGDataCollector --cover-html
         - python setup.py bdist_wheel
        
     artifacts:
