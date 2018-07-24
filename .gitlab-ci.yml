@@ -10,14 +10,10 @@ before_script:
     - pip install -r requirements.txt
     - python setup.py develop
 
-runTest:
-    stage: test
-    script:
-        - nosetests -s MIGDataCollector --with-coverage --cover-erase --cover-inclusive --cover-package=MIGDataCollector --cover-html
-
 coverage:
     stage: test
     script:
+        - nosetests -s MIGDataCollector --with-coverage --cover-erase --cover-inclusive --cover-package=MIGDataCollector --cover-html
         - nosetests -c .noserc -q --cover-html-dir=build --cover-html
         - coverage report -m
     coverage: '/TOTAL.+ ([0-9]{1,3}%)/'
@@ -26,27 +22,3 @@ coverage:
             - build
         expire_in: 1 day
 
-apidoc:
-    stage: test
-    image: python:2.7
-    script:
-        - cd MIGDataCollector
-        - fab make
-    artifacts:
-        paths:
-            - MIGDataCollector/build/html
-
-pages:
-    stage: deploy
-    before_script:
-        - "true"
-    script:
-        - mkdir -p public/coverage
-        - cp -fr MIGDataCollector/build/html/* public/
-        - cp -fr build/* public/coverage/
-    dependencies:
-        - coverage
-        - apidoc
-    artifacts:
-        paths:
-            - public
