@@ -9,6 +9,7 @@ from MIGDataCollector.src.controllers.datacollector import datacollector
 from MIGDataCollector.src.controllers.log import logfileviewer, logdataviewer
 
 log = logger.MIGLogger.getLogger(__name__)
+log = logger.MIGLogger.getLogger(__name__)
 
 
 class DataCollectorApp(object):
