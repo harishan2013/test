@@ -23,15 +23,4 @@ coverage:
         
     except:
         - master
-        
-wheel:
-    stage: build
-    script:
-        - python setup.py bdist_wheel
-       
-    artifacts:
-       paths:
-          - dist/
-    only:
-        - master
 
