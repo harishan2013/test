@@ -18,3 +18,7 @@ coverage:
     artifacts:
         paths:
             - build
+    only:
+        - branches
+    except:
+        - master
