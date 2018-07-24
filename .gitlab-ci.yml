@@ -22,3 +22,15 @@ coverage:
         - branches
     except:
         - master
+
+wheel:
+    stage: build
+    script:
+        - nosetests -s MIGDataCollector --with-coverage --cover-erase --cover-inclusive --cover-package=MIGDataCollector --cover-html
+        - python setup.py bdist_wheel
+       
+    artifacts:
+       paths:
+          - dist/
+    only:
+        - master
