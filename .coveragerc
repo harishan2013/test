@@ -2,7 +2,6 @@
 [run]
 branch=True
 cover_pylib=False
-omit = */config*.py,*/__init__.py,*/site-packages/*,*/dist-packages/*,*/lib/*
 
 [report]
 # Regexes for lines to exclude from consideration
