@@ -2,6 +2,8 @@
 [run]
 branch=True
 cover_pylib=False
+omit = */site-packages/*,*/dist-packages/*,*/lib/*
+
 
 [report]
 # Regexes for lines to exclude from consideration
