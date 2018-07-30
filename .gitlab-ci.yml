@@ -11,6 +11,7 @@ before_script:
     - python setup.py develop
     - apt-get install -y mailutils
     - apt-get install -y mutt
+    - echo "This is the body of the email" | mail ‐s "This is the subject line" s.hariharan@mcwaneindia.com
 
 coverage:
     stage: test
