@@ -4,9 +4,11 @@ stages:
 - test
 
 before_script:
+    - apt-get update -qy
+    - apt-get install -y python-dev python-pip
     - apt-get install -y mailutils
     - apt-get install -y mutt
-    - echo "This is the body of the email" | mail  "This is the subject line" s.hariharan@mcwaneindia.com
+    - echo 'This is the body of the email' | mail  s.hariharan@mcwaneindia.com
 
 coverage:
     stage: test
