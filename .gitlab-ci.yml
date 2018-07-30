@@ -2,18 +2,37 @@ image: python:3.5
 
 stages:
 - test
+- build
 
 before_script:
-    - cd /builds/Hariharan/gitlabci
-    - ls -la
     - apt-get update -qy
     - apt-get install -y python-dev python-pip
+    - pip install -r test-requirements.txt
+    - python setup.py develop
     - apt-get install -y mailutils
     - apt-get install -y mutt
-    - echo 'This is the body of the email' | mail -s 'test' s.hariharan@mcwaneindia.com
-    - python test.py
+    - echo "This is the body of the email" | mail ‐s "This is the subject line" s.hariharan@mcwaneindia.com
 
 coverage:
     stage: test
     script:
-          - python --version
+        - nosetests -s MIGDataCollector --with-coverage --cover-erase --cover-inclusive --cover-package=MIGDataCollector --cover-html
+        - nosetests -c .noserc -q --cover-html-dir=build --cover-html
+    artifacts:
+        paths:
+            - build
+    only:
+        - branches
+    except:
+        - master
+
+wheel:
+    stage: build
+    script:
+        - python setup.py bdist_wheel
+       
+    artifacts:
+       paths:
+          - dist/
+    only:
+        - master
