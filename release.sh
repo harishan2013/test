@@ -12,7 +12,7 @@ if [ "$release_version" = "$tagvalue" ]; then
     echo "$release_version Tag has already been released and cannot create the same one again"
     exit 1	
 else    
-    python setup.py  bdist_wheel upload -r pyshop
+    python setup.py  bdist_wheel
     git tag -a $release_version -m ""
     git push origin --tags
 fi
