@@ -8,6 +8,6 @@ string=$DEPLOY_SERVER
       apt-get update -qy
       apt-get install -y sshpass
       #sshpass -p $SSH_PRIVATE_KEY  rsync -avz -e ssh charlie@13.232.57.200:"cd /opt && git clone http://Hariharan:SVR53S6usDk9ysxFDPB-@gitlab.com/mws-technology/MIGDataModel.git"
-      sshpass -p charlie ssh charlie@13.232.57.200
+      sshpass -p ubuntu ssh ubuntu@13.232.57.200
       cd /opt
       ls
