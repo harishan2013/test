@@ -7,4 +7,7 @@ string=$DEPLOY_SERVER
       #ssh ubuntu@ec2-13-232-57-200.ap-south-1.compute.amazonaws.com "cd /opt && git clone http://Hariharan:SVR53S6usDk9ysxFDPB-@gitlab.com/mws-technology/MIGDataModel.git"
       apt-get update -qy
       apt-get install -y sshpass
-      sshpass -p $SSH_PRIVATE_KEY  rsync -avz -e ssh charlie@13.232.57.200:"cd /opt && git clone http://Hariharan:SVR53S6usDk9ysxFDPB-@gitlab.com/mws-technology/MIGDataModel.git"
+      #sshpass -p $SSH_PRIVATE_KEY  rsync -avz -e ssh charlie@13.232.57.200:"cd /opt && git clone http://Hariharan:SVR53S6usDk9ysxFDPB-@gitlab.com/mws-technology/MIGDataModel.git"
+      sshpass -p charlie ssh charlie@13.232.57.200
+      cd /opt
+      ls
