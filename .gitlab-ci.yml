@@ -13,7 +13,7 @@ production:
     - eval "$(ssh-agent -s)"
    script:     
       - ip a
-      - ssh $DEPLOY_USER@$DEPLOY_SERVER "cd /opt && sh tesh.sh" 
+      - ssh root@$DEPLOY_SERVER "cd /opt && sh tesh.sh" 
    environment:     
       name: test 
    when: manual
