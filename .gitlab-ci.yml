@@ -11,7 +11,8 @@ production:
     - echo "$DEPLOY_SERVER_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
     - chmod 600 ~/.ssh/id_rsa
     - eval "$(ssh-agent -s)"
-    - ssh-add ~/.ssh/id_rsa
+    - cat my_private_key | base64 -W0 
+    - ssh-add <(echo "$DEPLOY_SERVER_PRIVATE_KEY" | base64 -d)
     - ssh-keyscan -H $DEPLOY_SERVER >> ~/.ssh/known_hosts
    script:
       - ssh devops@$DEPLOY_SERVER "cd /opt && sh tesh.sh" 
