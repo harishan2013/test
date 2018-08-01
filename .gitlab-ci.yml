@@ -7,14 +7,15 @@ stages:
 production:   
    stage: test   
    before_script: 
-   #generate ssh key   
-     - mkdir -p ~/.ssh     
-     - echo -e "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa     
-     - chmod 600 ~/.ssh/id_rsa     
-     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'   
+    - mkdir -p ~/.ssh
+    - echo "$DEPLOY_SERVER_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - eval "$(ssh-agent -s)"
+    - ssh-add ~/.ssh/id_rsa
+    - ssh-keyscan -H $DEPLOY_SERVER >> ~/.ssh/known_hosts   
    script:     
       - ip a
-      - bash .gitlab-deploy.sh   
+      - ssh $DEPLOY_USER@$DEPLOY_SERVER "cd /opt && sh tesh.sh" 
    environment:     
       name: test 
    when: manual
