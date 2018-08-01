@@ -7,13 +7,12 @@ stages:
 production:   
    stage: test   
    before_script: 
-    - mkdir -p ~/.ssh
-    - echo "$DEPLOY_SERVER_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
-    - chmod 600 ~/.ssh/id_rsa
-    - eval "$(ssh-agent -s)"
-   script:     
-      - ip a
-      - ssh root@$DEPLOY_SERVER "cd /opt && sh tesh.sh" 
+     - mkdir -p ~/.ssh     
+     - echo -e "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa     
+     - chmod 600 ~/.ssh/id_rsa     
+     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+   script:
+      - ssh ubuntu@$DEPLOY_SERVER "cd /opt && sh tesh.sh" 
    environment:     
       name: test 
    when: manual
