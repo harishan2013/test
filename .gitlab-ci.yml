@@ -13,7 +13,7 @@ production:
     - mkdir -p ~/.ssh
     - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
    script:
-      - ssh -t devops@$DEPLOY_SERVER "cd /opt && sh tesh.sh" 
+      - ssh devops@$DEPLOY_SERVER "cd /opt && sh tesh.sh" 
    environment:     
       name: test 
    when: manual
