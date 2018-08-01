@@ -7,17 +7,13 @@ stages:
 production:   
    stage: test   
    before_script: 
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$DEPLOY_SERVER_PRIVATE_KEY")
     - mkdir -p ~/.ssh
-    - echo "$DEPLOY_SERVER_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
-    - chmod 600 ~/.ssh/id_rsa
-    - eval "$(ssh-agent -s)"
-    - ssh-keygen -f deploy_key -N ""
-    - cat deploy_key | base64 -w0
-    - cat $DEPLOY_SERVER_PRIVATE_KEY | base64 -W0 
-    - ssh-add <(echo "$DEPLOY_SERVER_PRIVATE_KEY" | base64 --decode)
-    - ssh-keyscan -H $DEPLOY_SERVER >> ~/.ssh/known_hosts
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
    script:
-      - ssh devops@$DEPLOY_SERVER "cd /opt && sh tesh.sh" 
+      - ssh -t devops@$DEPLOY_SERVER "cd /opt && sh tesh.sh" 
    environment:     
       name: test 
    when: manual
