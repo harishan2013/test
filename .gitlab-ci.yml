@@ -12,7 +12,7 @@ production:
      - chmod 600 ~/.ssh/id_rsa     
      - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
    script:
-      - ssh ubuntu@$DEPLOY_SERVER "cd /opt && sh tesh.sh" 
+      - ssh devops@$DEPLOY_SERVER "cd /opt && sh tesh.sh" 
    environment:     
       name: test 
    when: manual
