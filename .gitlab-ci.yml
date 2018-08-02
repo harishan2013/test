@@ -14,4 +14,4 @@ build:
   stage: build
   script:
     - $(aws ecr get-login --no-include-email --region ap-south-1)
-    - cd /opt
+    - aws ec2 describe-instances
