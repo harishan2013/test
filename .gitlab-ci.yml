@@ -14,5 +14,7 @@ build:
   stage: build
   script:
     - $(aws ecr get-login --no-include-email --region ap-south-1)
+    - aws configure set aws_access_key_id default_access_key
+    - aws configure set aws_secret_access_key default_secret_key
     - aws configure set default.region ap-south-1
     - aws ec2 describe-instances
