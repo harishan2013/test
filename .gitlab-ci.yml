@@ -14,7 +14,7 @@ production:
     - ssh-add ~/.ssh/id_rsa
     - ssh-keyscan -H $DEPLOY_SERVER >> ~/.ssh/known_hosts
    script:
-      - ssh -i $DEPLOY_SERVER_PRIVATE_KEY ubuntu@$DEPLOY_SERVER "cd /opt && ls -la" 
+      - ssh  ubuntu@$DEPLOY_SERVER "cd /opt && ls -la" 
    environment:     
       name: test 
    when: manual
