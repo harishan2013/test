@@ -18,4 +18,4 @@ build:
     - aws configure set aws_secret_access_key default_secret_key
     - aws configure set default.region ap-south-1
     - aws ec2 describe-instances
-    - eb ssh
+    - aws eb ssh
