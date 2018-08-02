@@ -18,5 +18,5 @@ build:
     - aws configure set aws_secret_access_key default_secret_key
     - aws configure set default.region ap-south-1
     - aws ec2 describe-instances
-    - aws ec2 get-console-output --instance-id i-09dbac2a282fd63e1
-    - ssh ubuntu@13.126.134.252
+    - aws ec2 help
+    - aws emr ssh --cluster-id i-09dbac2a282fd63e1
