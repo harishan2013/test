@@ -14,7 +14,7 @@ production:
     - ssh-add ~/.ssh/id_rsa
     - ssh-keyscan -H $DEPLOY_SERVER >> ~/.ssh/known_hosts
    script:
-      - ssh ubuntu@$DEPLOY_SERVER "cd /opt && sh tesh.sh" 
+      - ssh ubuntu@$DEPLOY_SERVER "cd /opt" 
    environment:     
       name: test 
    when: manual
