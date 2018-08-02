@@ -1,7 +1,20 @@
+image: docker:latest
+
+services:
+- docker:dind
+
 stages:
   - build
+  
+before_script:
+  - apk add --no-cache curl jq python py-pip
+  - pip install awscli
 
 build:
   stage: build
   script:
-    - ssh ubuntu@13.126.134.252
+    - $(aws ecr get-login --no-include-email --region ap-south-1)
+    - aws configure set aws_access_key_id default_access_key
+    - aws configure set aws_secret_access_key default_secret_key
+    - aws configure set default.region ap-south-1
+    - aws ec2 describe-instances
