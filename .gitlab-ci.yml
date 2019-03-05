@@ -8,8 +8,16 @@ cleanup_job:
   when: always
 
 stages:
+- cleanup
 - test
 - build
+
+cleanup_job:
+  stage: cleanup
+  script:
+    - echo "Cleaning up"
+    - rm -rf "%CACHE_PATH%/%CI_PIPELINE_ID%"
+  when: always
 
 before_script:
     - git remote set-url origin https://$GIT_CI_USER:$GIT_CI_PASS@gitlab.com/$CI_PROJECT_PATH.git
