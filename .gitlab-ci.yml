@@ -1,7 +1,7 @@
 cleanup_job:
   script:
     - echo "Cleaning up"
-    - curl --header "PRIVATE-TOKEN: SVR53S6usDk9ysxFDPB-" --request "DELETE" "https://gitlab.com/Hariharan/gitlabci/api/v4/projects/1/pipelines/54532127"
+    - echo "curl --header "PRIVATE-TOKEN: SVR53S6usDk9ysxFDPB-" --request "DELETE" "https://gitlab.com/Hariharan/gitlabci/api/v4/projects/1/pipelines/54532127""
   when: always
 
 
