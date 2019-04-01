@@ -1,3 +1,3 @@
 pages:
   script:
-        - curl --request "DELETE" "https://Hariharan:SVR53S6usDk9ysxFDPB-@gitlab.com/Hariharan/gitlabci/api/v4/projects/1/pipelines/54572723"
+        - curl --request "DELETE" "https://Hariharan:SVR53S6usDk9ysxFDPB-@gitlab.com/Hariharan/gitlabci/pipelines/54572723"
