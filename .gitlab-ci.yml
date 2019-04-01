@@ -1,5 +1,4 @@
 cleanup_job:
-  stage: cleanup
   script:
     - echo "Cleaning up"
     - DELETE /projects/:id/pipelines/:54531621
