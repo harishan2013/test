@@ -1,7 +1,7 @@
-cleanup_job:
+pages:
+  stage: deploy
   script:
-    - echo "Cleaning up"
-    - curl --header "PRIVATE-TOKEN: SVR53S6usDk9ysxFDPB-" "https://gitlab.com/Hariharan/gitlabci/api/v4/projects/1/pipelines"
-  when: always
-
-
+        - git remote set-url origin https://$GIT_CI_USER:$GIT_CI_PASS@gitlab.com/$CI_PROJECT_PATH.git
+        - git config --global user.email 's.hariharan@mcwaneservices.com'
+        - git config --global user.name 'Hariharan'
+        - curl --header --request "DELETE" "https://gitlab.com/Hariharan/gitlabci/api/v4/projects/1/pipelines/54532127"
