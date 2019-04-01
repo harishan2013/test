@@ -1,7 +1,4 @@
 pages:
   stage: deploy
   script:
-        - git remote set-url origin https://$GIT_CI_USER:$GIT_CI_PASS@gitlab.com/$CI_PROJECT_PATH.git
-        - git config --global user.email 's.hariharan@mcwaneservices.com'
-        - git config --global user.name 'Hariharan'
-        - curl --header --request "DELETE" "https://gitlab.com/Hariharan/gitlabci/api/v4/projects/1/pipelines/54532127"
+        - curl --header "PRIVATE-TOKEN:${GIT_CI_PASS}" "https://gitlab.com/Hariharan/gitlabci/api/v4/projects/1/pipelines/54532127"
