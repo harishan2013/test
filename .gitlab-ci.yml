@@ -1,53 +1,8 @@
-image: python:3.5
-
 cleanup_job:
   stage: cleanup
   script:
     - echo "Cleaning up"
-    - rm -rf "%CACHE_PATH%/%CI_PIPELINE_ID%"
+    - DELETE /projects/:id/pipelines/:54531621
   when: always
 
-stages:
-- cleanup
-- test
-- build
 
-cleanup_job:
-  stage: cleanup
-  script:
-    - echo "Cleaning up"
-    - rm -rf "%CACHE_PATH%/%CI_PIPELINE_ID%"
-  when: always
-
-before_script:
-    - git remote set-url origin https://$GIT_CI_USER:$GIT_CI_PASS@gitlab.com/$CI_PROJECT_PATH.git
-    - git config --global user.email 's.hariharan@mcwaneservices.com'
-    - git config --global user.name 'Hariharan'
-    - apt-get update -qy
-    - apt-get install -y python-dev python-pip
-    - pip install -r test-requirements.txt
-    - python setup.py develop
-
-coverage:
-    stage: test
-    script:
-        - nosetests -s MIGDataCollector --with-coverage --cover-erase --cover-inclusive --cover-package=MIGDataCollector --cover-html
-        - nosetests -c .noserc -q --cover-html-dir=build --cover-html
-    artifacts:
-        paths:
-            - build
-    only:
-        - branches
-    except:
-        - master
-
-wheel:
-    stage: build
-    script:
-        - sh release.sh
-       
-    artifacts:
-       paths:
-          - dist/
-    only:
-        - master
