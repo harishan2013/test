@@ -1,7 +1,7 @@
 cleanup_job:
   script:
     - echo "Cleaning up"
-    - DELETE /delpipline/:id/pipelines/:54532127
+    - DELETE /Hariharan/gitlabci:id/pipelines/:54532127
   when: always
 
 
