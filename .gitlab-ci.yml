@@ -1,4 +1,4 @@
 pages:
   stage: deploy
   script:
-        - curl  "http://Hariharan:SVR53S6usDk9ysxFDPB-@gitlab.com/Hariharan/gitlabci/api/v4/projects/1/pipelines"
+        - curl  --header "http://Hariharan:SVR53S6usDk9ysxFDPB-@gitlab.com/Hariharan/gitlabci/api/v4/projects/1/pipelines"
