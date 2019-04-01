@@ -1,7 +1,7 @@
 cleanup_job:
   script:
     - echo "Cleaning up"
-    - echo curl --header "PRIVATE-TOKEN: SVR53S6usDk9ysxFDPB-" "https://gitlab.com/Hariharan/gitlabci/api/v4/projects/1/pipelines"
+    - curl --header "PRIVATE-TOKEN: SVR53S6usDk9ysxFDPB-" "https://gitlab.com/Hariharan/gitlabci/api/v4/projects/1/pipelines"
   when: always
 
 
