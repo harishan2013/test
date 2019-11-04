@@ -11,4 +11,4 @@
       #sshpass -p ubuntu ssh ubuntu@13.232.57.200
       #sshpass -p charlie ssh -o StrictHostKeyChecking=no -o PreferredAuthentications=password -o PubkeyAuthentication=no charlie@13.232.57.200 "cd /opt && sh test.sh"
       #sshpass -p $DEPLOY_PASS ssh -o StrictHostKeyChecking=no -o PreferredAuthentications=password -o PubkeyAuthentication=no $DEPLOY_USER@$DEPLOY_SERVER "cd /opt && ls -lt"
-      sshpass -p $DEPLOY_PASS ssh -o StrictHostKeyChecking=no -o PreferredAuthentications=password -o PubkeyAuthentication=no d.nandakumar@13.233.15.57 "cd /opt && mkdir deploy"
+      sshpass -p $DEPLOY_PASS ssh -o StrictHostKeyChecking=no -o PreferredAuthentications=password -o PubkeyAuthentication=no $DEPLOY_USER@$DEPLOY_SERVER "cd /opt && mkdir deploy"
