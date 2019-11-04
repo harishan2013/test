@@ -10,4 +10,4 @@ string=$DEPLOY_SERVER
       #sshpass -p $SSH_PRIVATE_KEY  rsync -avz -e ssh charlie@13.232.57.200:"cd /opt && git clone http://Hariharan:SVR53S6usDk9ysxFDPB-@gitlab.com/mws-technology/MIGDataModel.git"
       #sshpass -p ubuntu ssh ubuntu@13.232.57.200
       #sshpass -p charlie ssh -o StrictHostKeyChecking=no -o PreferredAuthentications=password -o PubkeyAuthentication=no charlie@13.232.57.200 "cd /opt && sh test.sh"
-      sshpass -p $DEPLOY_PASS ssh -o StrictHostKeyChecking=no -o PreferredAuthentications=password -o PubkeyAuthentication=no $DEPLOY_USER@$DEPLOY_SERVER "cd /opt && sh test.sh"
+      sshpass -p $DEPLOY_PASS ssh -o StrictHostKeyChecking=no -o PreferredAuthentications=password -o PubkeyAuthentication=no $DEPLOY_USER@$DEPLOY_SERVER "cd /opt && ls -lt"
