@@ -1,13 +1,13 @@
-#!/usr/bin/env bash
-echo 'installing requirements'
-pip install -r test-requirements.txt
-
-echo 'setting up paths to development'
-python setup.py develop
-
-echo 'Pylint Code Review and Report Generation'
-pylint --rcfile=pylint.rc  MIGDataCollector >  MIGDataCollector/pylint_unit.out
-
-echo 'running nosetests with report generation and coverage options'
-
-nosetests -s MIGDataCollector --with-coverage --cover-erase --cover-inclusive --cover-package=MIGDataCollector --cover-xml --with-xunit > nose_test.out
+#!/bin/bash
+#Get servers list
+set -f
+string=$DEPLOY_SERVER
+#Iterate servers for deploy and pull last commit
+      echo "Deploy project on server ${array[i]}"    
+      #ssh ubuntu@ec2-13-232-57-200.ap-south-1.compute.amazonaws.com "cd /opt && git clone http://Hariharan:SVR53S6usDk9ysxFDPB-@gitlab.com/mws-technology/MIGDataModel.git"
+      apt-get update -qy
+      apt-get install -y sshpass
+      #sshpass -p $SSH_PRIVATE_KEY  rsync -avz -e ssh charlie@13.232.57.200:"cd /opt && git clone http://Hariharan:SVR53S6usDk9ysxFDPB-@gitlab.com/mws-technology/MIGDataModel.git"
+      #sshpass -p ubuntu ssh ubuntu@13.232.57.200
+      #sshpass -p charlie ssh -o StrictHostKeyChecking=no -o PreferredAuthentications=password -o PubkeyAuthentication=no charlie@13.232.57.200 "cd /opt && sh test.sh"
+      sshpass -p $DEPLOY_PASS ssh -o StrictHostKeyChecking=no -o PreferredAuthentications=password -o PubkeyAuthentication=no $DEPLOY_USER@$DEPLOY_SERVER "cd /opt && ls -lt"
