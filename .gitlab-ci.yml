@@ -1,10 +1,6 @@
 image: python:3.5
 
-stages:
-- test
-
-#Production stage
-production:   
-   stage: test
-    script:
-      - sh .gitlab-deploy.sh
+cleanup_job:
+  stage: cleanup
+  script:
+    - echo "Deploy"
