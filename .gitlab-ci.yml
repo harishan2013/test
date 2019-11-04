@@ -5,16 +5,10 @@ stages:
 
 #Production stage
 production:   
-   stage: test   
-   before_script: 
-    - mkdir -p ~/.ssh
-    - echo "$DEPLOY_SERVER_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
-    - chmod 600 ~/.ssh/id_rsa
-    - eval "$(ssh-agent -s)"
-    - ssh-add ~/.ssh/id_rsa
-    - ssh-keyscan -H $DEPLOY_SERVER >> ~/.ssh/known_hosts
-   script:
-      - ssh  ubuntu@$DEPLOY_SERVER "cd /opt && ls -la" 
-   environment:     
-      name: test 
-   when: manual
+   stage: test
+    script:
+      - sh .gitlab-deploy.sh
+ only:
+        - branches
+    except:
+        - master
