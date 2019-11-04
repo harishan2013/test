@@ -1,16 +1,12 @@
 image: python:3.5
 
-cleanup_job:
-  stage: cleanup
-  script:
-    - echo "Cleaning up"
-  when: always
-
 stages:
-- cleanup
+- build
 
-cleanup_job:
-  stage: cleanup
-  script:
-    - echo "Cleaning up"
-    when: always
+deploy:
+    stage: build
+    script:
+        - echo "test"
+
+
+
