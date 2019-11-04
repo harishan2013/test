@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #Get servers list
-set -f
-string=$DEPLOY_SERVER
+#set -f
+#string=$DEPLOY_SERVER
 #Iterate servers for deploy and pull last commit
-      echo "Deploy project on server ${array[i]}"    
+      echo "Deploy project on server"    
       #ssh ubuntu@ec2-13-232-57-200.ap-south-1.compute.amazonaws.com "cd /opt && git clone http://Hariharan:SVR53S6usDk9ysxFDPB-@gitlab.com/mws-technology/MIGDataModel.git"
       apt-get update -qy
       apt-get install -y sshpass
