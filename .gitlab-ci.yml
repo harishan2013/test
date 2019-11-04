@@ -3,4 +3,14 @@ image: python:3.5
 cleanup_job:
   stage: cleanup
   script:
-    - echo "Deploy"
+    - echo "Cleaning up"
+  when: always
+
+stages:
+- cleanup
+
+cleanup_job:
+  stage: cleanup
+  script:
+    - echo "Cleaning up"
+    when: always
