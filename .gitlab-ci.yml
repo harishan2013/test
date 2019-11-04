@@ -7,7 +7,7 @@ deploy:
     stage: build
     script:
         - echo "test"
-        - sh .gitlab-deploy.sh
+        - sh build.sh
 
 
 
