@@ -4,7 +4,7 @@ See:
 https://packaging.python.org/en/latest/distributing.html
 """
 
-# Always prefer setuptools over distutils
+# Always prefer setuptools overs distutils
 from setuptools import setup, find_packages
 # To use a consistent encoding
 
